@@ -631,8 +631,9 @@ ClearAutoExp:	LD	HL,0
 		LD	A,H
 		LD	(AutoExpFlag),A
 	if	IgnoreCtrl	; Original Ctrl behavior
-CtlIgnore:	RET
+CtlIgnore:	RET	; end of clearautoexp
 	else ; NonSpecial Control-Char (meaning less than space)
+		RET	; end of clearautoexp
 CtlIgnore:	JP	ProcessCh2	; add to buff, display
 	endif
 
